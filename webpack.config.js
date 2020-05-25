@@ -5,13 +5,13 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve( __dirname, 'dist' ),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     chunkFilename: '[id].js',
     publicPath: '',
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
@@ -29,33 +29,47 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: "[name]__[local]__[hash:base64:5]",
+                localIdentName: '[name]__[local]__[hash:base64:5]',
               },
               sourceMap: true,
-            }
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: () => [
-                autoprefixer({})
-              ]
-            }
-          }
+              plugins: () => [autoprefixer({})],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader'},
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true,
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
+          },
         ],
       },
       {
         test: /\.(png|jpe?g|gif)?$/,
-        loader: 'url-loader?limit=10000&name=img/[name].[ext]'
-     }
-    ]
+        loader: 'url-loader?limit=10000&name=img/[name].[ext]',
+      },
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
       filename: 'index.html',
-      inject: 'body'
-    })
-  ]
+      inject: 'body',
+    }),
+  ],
 };

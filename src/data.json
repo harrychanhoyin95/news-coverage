@@ -1,0 +1,45 @@
+{
+  "status": "ok",
+  "totalResults": 69,
+  "articles": [
+    {
+      "source": {
+        "id": null,
+        "name": "Finanzen.net"
+      },
+      "author": "finanzen.net Redaktion",
+      "title": "HELLA kann Pandemie-Folgen nicht kompensieren und setzt Dividende aus - Aktie verliert - finanzen.net",
+      "description": "Der Autozulieferer HELLA bekommt die Auswirkungen der Pandemie zu spüren.",
+      "url": "https://www.finanzen.net/nachricht/aktien/verluste-befuerchtet-hella-kann-pandemie-folgen-nicht-kompensieren-und-setzt-dividende-aus-aktie-verliert-8903401",
+      "urlToImage": "https://images.finanzen.net/mediacenter/unsortiert/hella_660x303.jpg",
+      "publishedAt": "2020-05-25T15:55:00Z",
+      "content": "Um Ihnen die Übersicht über die große Anzahl an Nachrichten, die jeden Tag für ein Unternehmen erscheinen, etwas zu erleichtern, haben wir den Nachrichtenfeed in folgende Kategorien aufgeteilt:\r\nRele… [+396 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "T-online.de"
+      },
+      "author": "t-online.de, Sophie Loelke",
+      "title": "Tesla-Chef: X Æ A-12? Elon Musk und Grimes müssen Sohn umbenennen - t-online.de",
+      "description": "Das kalifornische Gesetz ließ den ursprünglichen Namen 'X Æ A-12' für das Neugeborene von Elon Musk und seiner Partnerin nicht zu. Jetzt haben die Eltern diesen minimal angepasst.",
+      "url": "https://www.t-online.de/unterhaltung/stars/id_87938660/tesla-chef-x-a-12-elon-musk-und-grimes-muessen-sohn-umbenennen.html",
+      "urlToImage": "https://bilder.t-online.de/b/87/93/89/96/id_87938996/tid_da/elon-musk-faellt-oefter-wegen-seiner-ungewoehnlichen-ideen-auf-.jpg",
+      "publishedAt": "2020-05-25T15:51:28Z",
+      "content": "Das kalifornische Gesetz ließ den ursprünglichen Namen \"X Æ A-12\" für das Neugeborene von Elon Musk und seiner Partnerin nicht zu. Jetzt haben die Eltern diesen an einer Stelle angepasst.\r\nTesla-Chef… [+1248 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Welt.de"
+      },
+      "author": "Olaf Preuß",
+      "title": "BGH: Desaster für Volkswagen im Dieselskandal - WELT",
+      "description": "Der Bundesgerichtshof hat im Dieselskandal ein deutliches Urteil im Sinne der geschädigten Autokäufer gesprochen. Der Kläger erhält große Teile des Kaufpreises zurück. Für Volkswagen kann es jetzt noch einmal richtig teuer werden.",
+      "url": "https://www.welt.de/wirtschaft/article208282987/BGH-Desaster-fuer-Volkswagen-im-Dieselskandal.html",
+      "urlToImage": "https://www.welt.de/img/wirtschaft/mobile208291843/7481353667-ci16x9-w1200/Germany-Volkswagen.jpg",
+      "publishedAt": "2020-05-25T14:54:00Z",
+      "content": "Für Volkswagen ist es ein Desaster. Der Bundesgerichtshof (BGH) hat am Montag in seinem ersten Grundsatzurteil zum Dieselskandal weitgehend im Sinne des Klägers geurteilt.\r\nUnklar bleibt zwar zunächs… [+4834 chars]"
+    }
+  ]
+}
