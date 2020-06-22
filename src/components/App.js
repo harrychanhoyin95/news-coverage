@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Layout from './molecules/Layout/Layout';
-import Home from './pages/Home/Home';
+import News from './pages/News/News';
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
       <Switch>
         <Layout>
           <Route path="/" exact>
-            <Home />
+            <News />
           </Route>
         </Layout>
       </Switch>

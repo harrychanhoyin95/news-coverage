@@ -15,8 +15,13 @@ const Logo = styled.img`
   height: 40px;
 `;
 
-const HeaderItems = styled.div`
+const HeaderItemsContainer = styled.div`
+  display: flex;
   margin-left: auto;
+`;
+
+const HeaderItems = styled.div`
+  margin-left: 16px;
   cursor: pointer;
 `;
 
@@ -24,8 +29,10 @@ const Header = () => {
   return (
     <Container>
       <Logo src={LogoSrc} />
-      <HeaderItems>News</HeaderItems>
-      <HeaderItems>Login</HeaderItems>
+      <HeaderItemsContainer>
+        <HeaderItems>News</HeaderItems>
+        <HeaderItems>Login</HeaderItems>
+      </HeaderItemsContainer>
       <Button />
     </Container>
   );

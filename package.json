@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development --inline --hot --open",
+    "start": "webpack-dev-server --mode development --inline --hot",
     "build": "webpack --mode=production",
     "lint:js": "eslint . --ext .js,.jsx",
     "lint:js:fix": "npm run lint:js -- --fix"
@@ -24,6 +24,8 @@
   "browserslist": "> 1%,last 2 versions",
   "dependencies": {
     "antd": "^4.2.5",
+    "lodash": "^4.17.15",
+    "moment": "^2.26.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
