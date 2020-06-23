@@ -1,14 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import Header from '../Header/Header';
+import NavBar from '../NavBar/NavBar';
+
+const Container = styled.div`
+  margin-bottom: 48px;
+`;
 
 const Layout = ({ children }) => {
   return (
     <>
-      <Header />
-      {children}
+      <NavBar />
+      <Container>{children}</Container>
     </>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.element.isRequired,
 };
 
 export default Layout;
