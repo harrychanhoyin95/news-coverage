@@ -44,20 +44,8 @@ module.exports = {
         ],
       },
       {
-        test: /\.less$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader'},
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true,
-              lessOptions: {
-                javascriptEnabled: true,
-              },
-            },
-          },
-        ],
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       },
       {
         test: /\.(png|jpe?g|gif)?$/,

@@ -10,6 +10,7 @@
         "libraryDirectory": "lib",
         "style": true
       }
-    ]
+    ],
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }

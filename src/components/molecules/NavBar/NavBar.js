@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { withRouter } from 'react-router-dom';
 
 const Container = styled.div`
   position: fixed;
@@ -15,7 +17,7 @@ const NavBarItemsContainer = styled.div`
   background-color: #202020;
 `;
 
-const MenuItem = ({ icon }) => {
+const MenuItem = ({ icon, onClick }) => {
   const NavBarItems = styled.div`
     cursor: pointer;
     color: #fff;
@@ -27,23 +29,36 @@ const MenuItem = ({ icon }) => {
   `;
 
   return (
-    <NavBarItems>
+    <NavBarItems onClick={onClick}>
       <FontAwesomeIcon icon={icon} />
     </NavBarItems>
   );
 };
 
-const NavBar = () => {
+MenuItem.propTypes = {
+  icon: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+};
+
+MenuItem.defaultProps = {
+  onClick: () => {},
+};
+
+const NavBar = ({ history }) => {
   return (
     <Container>
       <NavBarItemsContainer>
         <MenuItem icon="bars" />
-        <MenuItem icon="newspaper" />
-        <MenuItem icon="coins" />
+        <MenuItem icon="newspaper" onClick={() => history.push('/')} />
+        <MenuItem icon="coins" onClick={() => history.push('/currency')} />
         <MenuItem icon="cog" />
       </NavBarItemsContainer>
     </Container>
   );
 };
 
-export default NavBar;
+NavBar.propTypes = {
+  history: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.any])).isRequired,
+};
+
+export default withRouter(NavBar);
