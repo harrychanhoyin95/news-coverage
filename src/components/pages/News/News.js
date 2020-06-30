@@ -5,22 +5,16 @@ import LazyLoad from 'react-lazyload';
 import _ from 'lodash';
 import moment from 'moment';
 
-import Spinner from '../../atoms/Spinner/Spinner';
-import useFetch from '../../../hooks/useFetch';
 // import Image from '../../atoms/Image/Image';
 
 import * as Style from './NewsStyles';
 
-const News = ({ match }) => {
+const News = ({ routerProps, response }) => {
   const {
-    params: { source },
-  } = match;
-
-  const { response, isLoading } = useFetch(
-    `http://localhost:3000/api/news?source=${source}`
-  );
-
-  if (isLoading) return <Spinner />;
+    match: {
+      params: { source },
+    },
+  } = routerProps;
 
   const { data } = response;
 
@@ -58,9 +52,13 @@ const News = ({ match }) => {
 };
 
 News.propTypes = {
-  match: PropTypes.objectOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.object])
-  ).isRequired,
+  routerProps: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.object]))
+    .isRequired,
+  response: PropTypes.objectOf(PropTypes.array),
+};
+
+News.defaultProps = {
+  response: {},
 };
 
 export default News;

@@ -1,21 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-import useFetch from '../../../hooks/useFetch';
-import Spinner from '../../atoms/Spinner/Spinner';
 import Heading from '../../atoms/Heading/Heading';
 
 import * as Style from './NewsListStyles';
 
-const NewsList = () => {
-  const { response, isLoading } = useFetch(
-    'http://localhost:3000/api/news/sources'
-  );
-
-  if (isLoading) {
-    return <Spinner />;
-  }
-
+const NewsList = ({ response }) => {
   const { sources } = response;
 
   return (
@@ -38,6 +29,12 @@ const NewsList = () => {
       </Style.Grid>
     </Style.Container>
   );
+};
+
+NewsList.propTypes = {
+  response: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.object])
+  ).isRequired,
 };
 
 export default NewsList;

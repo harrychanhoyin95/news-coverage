@@ -1,9 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import styled from 'styled-components';
 
-import useFetch from '../../../hooks/useFetch';
-import Spinner from '../../atoms/Spinner/Spinner';
 import Heading from '../../atoms/Heading/Heading';
 
 const Container = styled.div`
@@ -36,7 +35,7 @@ const TData = styled.td`
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 `;
 
-const Currency = () => {
+const Currency = ({ response }) => {
   const acceptedCurrencies = [
     'HKD',
     'CAD',
@@ -47,14 +46,6 @@ const Currency = () => {
     'AUD',
     'CHF',
   ];
-  const { response, isLoading } = useFetch(
-    'http://localhost:3000/api/currency'
-  );
-
-  if (isLoading) {
-    return <Spinner />;
-  }
-
   const { data } = response;
 
   return (
@@ -93,6 +84,12 @@ const Currency = () => {
       </Table>
     </Container>
   );
+};
+
+Currency.propTypes = {
+  response: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.object])
+  ).isRequired,
 };
 
 export default Currency;
