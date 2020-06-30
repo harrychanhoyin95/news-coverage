@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 import _ from 'lodash';
@@ -10,6 +10,8 @@ import moment from 'moment';
 import * as Style from './NewsStyles';
 
 const News = ({ routerProps, response }) => {
+  const [historyData, setHistoryData] = useState([]);
+
   const {
     match: {
       params: { source },
@@ -18,8 +20,31 @@ const News = ({ routerProps, response }) => {
 
   const { data } = response;
 
-  // eslint-disable-next-line no-console
-  console.log('data', data);
+  useEffect(() => {
+    setHistoryData(JSON.parse(window.localStorage.getItem('history')));
+  }, []);
+
+  const setLocalStorage = ({ id }) => {
+    if (historyData) {
+      const newHistory = [...historyData, id];
+      setHistoryData(newHistory);
+      window.localStorage.setItem('history', JSON.stringify(newHistory));
+    } else {
+      setHistoryData([id]);
+      window.localStorage.setItem('history', JSON.stringify([id]));
+    }
+  };
+
+  const renderLabel = ({ id }) => {
+    if (historyData && historyData.includes(id)) {
+      return <Style.Label>READ</Style.Label>;
+    }
+    return null;
+  };
+
+  renderLabel.propTypes = {
+    id: PropTypes.string.isRequired,
+  };
 
   return (
     <>
@@ -36,13 +61,19 @@ const News = ({ routerProps, response }) => {
               href={n.url}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => setLocalStorage({ id: n.id })}
             >
               {/* <Image src={n.urlToImage} alt={n.title} /> */}
               <Style.HotLine>{n.title}</Style.HotLine>
-              <Style.Source>{_.startCase(n.source)}</Style.Source>
-              <Style.Time>
-                {moment(n.publishedAt).format('YYYY/MM/DD hh:mm:ss')}
-              </Style.Time>
+              <Style.DescriptionContainer>
+                <div>
+                  <Style.Source>{_.startCase(n.source)}</Style.Source>
+                  <Style.Time>
+                    {moment(n.publishedAt).format('YYYY/MM/DD hh:mm:ss')}
+                  </Style.Time>
+                </div>
+                {renderLabel({ id: n.id })}
+              </Style.DescriptionContainer>
             </Style.LinkContainer>
           </LazyLoad>
         );

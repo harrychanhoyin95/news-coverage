@@ -18,7 +18,7 @@ export const HeadingDescription = styled.div`
 
 export const LinkContainer = styled.a`
   display: block;
-  padding: 16px 32px;
+  padding: 16px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   cursor: pointer;
   color: #fff;
@@ -33,6 +33,10 @@ export const HotLine = styled.div`
   margin-bottom: 8px;
 `;
 
+export const DescriptionContainer = styled.div`
+  display: flex;
+`;
+
 export const Source = styled.div`
   margin-bottom: 4px;
   color: rgba(255, 255, 255, 0.75);
@@ -40,4 +44,13 @@ export const Source = styled.div`
 
 export const Time = styled.div`
   color: rgba(255, 255, 255, 0.75);
+`;
+
+export const Label = styled.div`
+  padding: 8px;
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 8px;
+  font-size: 12px;
+  margin: auto 0 0 auto;
 `;
