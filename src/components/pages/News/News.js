@@ -24,19 +24,22 @@ const News = ({ routerProps, response }) => {
     setHistoryData(JSON.parse(window.localStorage.getItem('history')));
   }, []);
 
-  const setLocalStorage = ({ id }) => {
+  const setLocalStorage = ({ id, url, title }) => {
     if (historyData) {
-      const newHistory = [...historyData, id];
+      const newHistory = [...historyData, { id, url, title }];
       setHistoryData(newHistory);
       window.localStorage.setItem('history', JSON.stringify(newHistory));
     } else {
       setHistoryData([id]);
-      window.localStorage.setItem('history', JSON.stringify([id]));
+      window.localStorage.setItem(
+        'history',
+        JSON.stringify([{ id, url, title }])
+      );
     }
   };
 
   const renderLabel = ({ id }) => {
-    if (historyData && historyData.includes(id)) {
+    if (historyData && historyData.some((d) => d.id === id)) {
       return <Style.Label>READ</Style.Label>;
     }
     return null;
@@ -61,7 +64,9 @@ const News = ({ routerProps, response }) => {
               href={n.url}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setLocalStorage({ id: n.id })}
+              onClick={() =>
+                setLocalStorage({ id: n.id, url: n.url, title: n.title })
+              }
             >
               {/* <Image src={n.urlToImage} alt={n.title} /> */}
               <Style.HotLine>{n.title}</Style.HotLine>
