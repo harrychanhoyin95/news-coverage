@@ -51,7 +51,7 @@ const NavBar = ({ history }) => {
         <MenuItem icon="bars" />
         <MenuItem icon="newspaper" onClick={() => history.push('/')} />
         <MenuItem icon="coins" onClick={() => history.push('/currency')} />
-        <MenuItem icon="cog" />
+        <MenuItem icon="cog" onClick={() => history.push('/settings')} />
       </NavBarItemsContainer>
     </Container>
   );

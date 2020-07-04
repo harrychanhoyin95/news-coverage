@@ -5,8 +5,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NewsPage from './pages/NewsList/NewsList';
 import NewsSourcePage from './pages/News/News';
 import CurrencyPage from './pages/Currency/Currency';
+import SettingsPage from './pages/Settings/Settings';
+import SignUpPage from './pages/SignUp/SignUp';
 
 import LoadingContainer from '../containers/Loading/Loading';
+import NotificationContainer from '../containers/Notification/Notification';
 
 import Layout from './molecules/Layout/Layout';
 import history from '../services/history';
@@ -68,6 +71,9 @@ const App = () => {
             component={CurrencyPage}
             url="http://localhost:3000/api/currency"
           />
+          <Route path="/settings" component={SettingsPage} />
+          <Route path="/signup" component={SignUpPage} />
+          <NotificationContainer />
         </Layout>
       </Switch>
     </Router>
