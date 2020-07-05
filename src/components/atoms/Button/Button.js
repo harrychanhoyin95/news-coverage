@@ -5,27 +5,48 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const PathButtonContainer = styled.div`
+const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 12px 24px;
-  border: 1px solid ${(props) => (props.primary ? '#fbc308' : 'transparent')};
+  border: 1px solid
+    ${(props) => {
+      switch (props.tone) {
+        case 'primary':
+          return '#fbc308';
+        case 'danger':
+          return '#c0392b';
+        default:
+          return '#fbc308';
+      }
+    }};
   border-radius: 4px;
-  background-color: ${(props) => (props.primary ? '#fbc308' : 'transparent')};
+  background-color: ${(props) => {
+    switch (props.tone) {
+      case 'primary':
+        return '#fbc308';
+      case 'danger':
+        return '#c0392b';
+      default:
+        return '#fbc308';
+    }
+  }};
+  width: ${(props) => (props.fullWidth ? '100%' : 'initial')};
 
-  & > a {
-    color: ${(props) => (props.primary ? '#000' : '#fff')};
+  & > a,
+  & > button {
+    color: ${(props) => {
+      switch (props.tone) {
+        case 'primary':
+          return '#000';
+        case 'danger':
+          return '#fff';
+        default:
+          return '#000';
+      }
+    }};
   }
-`;
-
-const SubmitButton = styled.button`
-  display: inline-block;
-  border: none;
-  text-decoration: none;
-  background-color: transparent;
-  font-size: 16px;
-  user-select: none;
 `;
 
 const StyledLink = styled(Link)`
@@ -35,21 +56,54 @@ const StyledLink = styled(Link)`
   user-select: none;
 `;
 
-const Button = ({ children, path, type, primary, onClick, isSubmitting }) => {
+const GeneralButton = styled.button`
+  display: inline-block;
+  border: none;
+  text-decoration: none;
+  background-color: transparent;
+  font-size: 16px;
+  user-select: none;
+`;
+
+const Button = ({
+  children,
+  path,
+  type,
+  primary,
+  danger,
+  onClick,
+  fullWidth,
+  isSubmitting,
+}) => {
+  let tone;
+  if (danger) {
+    tone = 'danger';
+  } else if (primary) {
+    tone = 'primary';
+  }
+
   if (type === 'submit') {
     return (
-      <PathButtonContainer primary={primary} onClick={onClick}>
-        <SubmitButton type="submit">
+      <ButtonContainer tone={tone} onClick={onClick} fullWidth={fullWidth}>
+        <GeneralButton type="submit">
           {isSubmitting ? <FontAwesomeIcon icon="spinner" spin /> : children}
-        </SubmitButton>
-      </PathButtonContainer>
+        </GeneralButton>
+      </ButtonContainer>
+    );
+  }
+
+  if (type === 'path') {
+    return (
+      <ButtonContainer tone={tone} fullWidth={fullWidth}>
+        <StyledLink to={path}>{children}</StyledLink>
+      </ButtonContainer>
     );
   }
 
   return (
-    <PathButtonContainer primary={primary}>
-      <StyledLink to={path}>{children}</StyledLink>
-    </PathButtonContainer>
+    <ButtonContainer tone={tone} fullWidth={fullWidth} onClick={onClick}>
+      <GeneralButton>{children}</GeneralButton>
+    </ButtonContainer>
   );
 };
 
@@ -58,14 +112,18 @@ Button.propTypes = {
   path: PropTypes.string,
   type: PropTypes.string,
   primary: PropTypes.bool,
+  danger: PropTypes.bool,
+  fullWidth: PropTypes.bool,
   onClick: PropTypes.func,
   isSubmitting: PropTypes.bool,
 };
 
 Button.defaultProps = {
-  path: '/',
+  path: null,
   type: 'button',
   primary: true,
+  danger: false,
+  fullWidth: false,
   onClick: () => {},
   isSubmitting: false,
 };

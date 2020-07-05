@@ -24,16 +24,16 @@ const News = ({ routerProps, response }) => {
     setHistoryData(JSON.parse(window.localStorage.getItem('history')));
   }, []);
 
-  const setLocalStorage = ({ id, url, title }) => {
+  const setLocalStorage = ({ id, url, title, newsSource }) => {
     if (historyData) {
-      const newHistory = [...historyData, { id, url, title }];
+      const newHistory = [...historyData, { id, url, title, newsSource }];
       setHistoryData(newHistory);
       window.localStorage.setItem('history', JSON.stringify(newHistory));
     } else {
       setHistoryData([id]);
       window.localStorage.setItem(
         'history',
-        JSON.stringify([{ id, url, title }])
+        JSON.stringify([{ id, url, title, newsSource }])
       );
     }
   };
@@ -65,7 +65,12 @@ const News = ({ routerProps, response }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() =>
-                setLocalStorage({ id: n.id, url: n.url, title: n.title })
+                setLocalStorage({
+                  id: n.id,
+                  url: n.url,
+                  title: n.title,
+                  newsSource: n.source,
+                })
               }
             >
               {/* <Image src={n.urlToImage} alt={n.title} /> */}

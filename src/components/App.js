@@ -6,6 +6,7 @@ import NewsPage from './pages/NewsList/NewsList';
 import NewsSourcePage from './pages/News/News';
 import CurrencyPage from './pages/Currency/Currency';
 import SettingsPage from './pages/Settings/Settings';
+import HistoryPage from './pages/History/History';
 import SignUpPage from './pages/SignUp/SignUp';
 
 import LoadingContainer from '../containers/Loading/Loading';
@@ -71,7 +72,8 @@ const App = () => {
             component={CurrencyPage}
             url="http://localhost:3000/api/currency"
           />
-          <Route path="/settings" component={SettingsPage} />
+          <Route path="/settings" exact component={SettingsPage} />
+          <Route path="/settings/history" component={HistoryPage} />
           <Route path="/signup" component={SignUpPage} />
           <NotificationContainer />
         </Layout>

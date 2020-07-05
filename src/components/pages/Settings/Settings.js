@@ -1,58 +1,61 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import Button from '../../atoms/Button/Button';
+import Heading from '../../atoms/Heading/Heading';
 
-const Container = styled.div`
-  padding: 24px;
-`;
+import * as Styles from './SettingsStyles';
 
-const UserProfile = styled.div`
-  display: flex;
-`;
+const Settings = ({ history }) => {
+  const [user, setUser] = useState(
+    JSON.parse(window.localStorage.getItem('user'))
+  );
 
-const UserIcon = styled(FontAwesomeIcon)`
-  padding: 16px;
-  margin-right: 16px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.75);
-`;
-
-const UserInfo = styled.div``;
-
-// const ButtonContainer = styled.div`
-
-// `;
-
-const Settings = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const userData = JSON.parse(window.localStorage.getItem('user'));
-    if (userData) {
-      setUser(userData);
-    }
-  }, []);
+  const onLogout = () => {
+    window.localStorage.removeItem('user', user);
+  };
 
   if (!user) {
     return (
-      <Container>
-        <Button path="/signUp">Sign up</Button>
-      </Container>
+      <Styles.Container>
+        <Styles.Button type="path" path="/signUp">
+          Sign up
+        </Styles.Button>
+      </Styles.Container>
     );
   }
 
   return (
-    <Container>
-      <UserProfile>
-        <UserIcon icon="user" />
-        <UserInfo>
-          <div>nss</div>
-        </UserInfo>
-      </UserProfile>
-    </Container>
+    <Styles.Container>
+      <Heading>Settings</Heading>
+      <Styles.UserProfile>
+        <Styles.UserIcon icon="user" />
+        <Styles.UserInfo>
+          <div>{user.name}</div>
+          <Styles.Email>{user.email}</Styles.Email>
+        </Styles.UserInfo>
+      </Styles.UserProfile>
+
+      <Styles.SettingTabContainer>
+        <Styles.SettingTab onClick={() => history.push('/settings/history')}>
+          <div>News you&apos;ve read</div>
+          <Styles.ChervonRight icon="chevron-right" />
+        </Styles.SettingTab>
+      </Styles.SettingTabContainer>
+
+      <Styles.LogoutButtonContainer>
+        <Button danger fullWidth onClick={onLogout}>
+          Logout
+        </Button>
+      </Styles.LogoutButtonContainer>
+    </Styles.Container>
   );
 };
 
-export default Settings;
+Settings.propTypes = {
+  history: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.any])).isRequired,
+};
+
+export default withRouter(Settings);

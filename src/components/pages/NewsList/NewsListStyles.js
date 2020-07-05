@@ -17,6 +17,9 @@ export const Card = styled.div`
   border-radius: 4px;
   cursor: pointer;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const LinkTo = styled(Link)`
