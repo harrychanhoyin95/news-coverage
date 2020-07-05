@@ -17,12 +17,14 @@ const Settings = ({ history }) => {
     window.localStorage.removeItem('user', user);
   };
 
+  console.log('user', user);
+
   if (!user) {
     return (
       <Styles.Container>
-        <Styles.Button type="path" path="/signUp">
+        <Button type="path" path="/signUp">
           Sign up
-        </Styles.Button>
+        </Button>
       </Styles.Container>
     );
   }

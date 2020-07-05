@@ -11,11 +11,13 @@ const signUp = async ({ name, email, password }) => {
     })
       .then((res) => {
         if (res.ok) return res.json();
-        throw new Error('Something went wrong');
+        return res.json().then((err) => {
+          throw err.errors;
+        });
       })
       .then((json) => json.user)
       .catch((err) => {
-        throw new Error(err);
+        throw err;
       });
 
     return localStorage.setItem('user', JSON.stringify(user));
