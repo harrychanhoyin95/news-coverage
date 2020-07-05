@@ -13,7 +13,6 @@ const FormComponent = ({ field, form, type }) => {
       return (
         <Styles.Container>
           <Styles.MuiTextField
-            autoFocus
             fullWidth
             type={type || 'text'}
             variant="outlined"

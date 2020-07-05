@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+
+import { useAuth } from '../../../contexts/AuthContext';
 
 import Button from '../../atoms/Button/Button';
 import Heading from '../../atoms/Heading/Heading';
@@ -9,23 +11,24 @@ import Heading from '../../atoms/Heading/Heading';
 import * as Styles from './SettingsStyles';
 
 const Settings = ({ history }) => {
-  const [user, setUser] = useState(
-    JSON.parse(window.localStorage.getItem('user'))
-  );
+  const { authUser, setAuthUser } = useAuth();
 
   const onLogout = () => {
-    window.localStorage.removeItem('user', user);
+    setAuthUser();
+    localStorage.removeItem('user');
+    history.push('/');
   };
 
-  console.log('user', user);
-
-  if (!user) {
+  if (!authUser) {
     return (
-      <Styles.Container>
-        <Button type="path" path="/signUp">
+      <Styles.SignUpContainer>
+        <Styles.FormButton type="path" path="/signUp">
           Sign up
-        </Button>
-      </Styles.Container>
+        </Styles.FormButton>
+        <Styles.FormButton type="path" path="/login">
+          Login
+        </Styles.FormButton>
+      </Styles.SignUpContainer>
     );
   }
 
@@ -35,8 +38,8 @@ const Settings = ({ history }) => {
       <Styles.UserProfile>
         <Styles.UserIcon icon="user" />
         <Styles.UserInfo>
-          <div>{user.name}</div>
-          <Styles.Email>{user.email}</Styles.Email>
+          <div>{authUser.name}</div>
+          <Styles.Email>{authUser.email}</Styles.Email>
         </Styles.UserInfo>
       </Styles.UserProfile>
 

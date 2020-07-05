@@ -20,7 +20,34 @@ const signUp = async ({ name, email, password }) => {
         throw err;
       });
 
-    return localStorage.setItem('user', JSON.stringify(user));
+    return { user };
+  } catch (error) {
+    return error;
+  }
+};
+
+const login = async ({ email, password }) => {
+  try {
+    const user = await fetch('http://localhost:3000/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
+        return res.json().then((err) => {
+          throw err.errors;
+        });
+      })
+      .then((json) => json.user)
+      .catch((err) => {
+        throw err;
+      });
+
+    return { user };
   } catch (error) {
     return error;
   }
@@ -28,4 +55,5 @@ const signUp = async ({ name, email, password }) => {
 
 export default {
   signUp,
+  login,
 };

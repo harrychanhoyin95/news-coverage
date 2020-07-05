@@ -74,6 +74,7 @@ const Button = ({
   onClick,
   fullWidth,
   isSubmitting,
+  ...props
 }) => {
   let tone;
   if (danger) {
@@ -84,7 +85,12 @@ const Button = ({
 
   if (type === 'submit') {
     return (
-      <ButtonContainer tone={tone} onClick={onClick} fullWidth={fullWidth}>
+      <ButtonContainer
+        tone={tone}
+        onClick={onClick}
+        fullWidth={fullWidth}
+        {...props}
+      >
         <GeneralButton type="submit">
           {isSubmitting ? <FontAwesomeIcon icon="spinner" spin /> : children}
         </GeneralButton>
@@ -94,14 +100,19 @@ const Button = ({
 
   if (type === 'path') {
     return (
-      <ButtonContainer tone={tone} fullWidth={fullWidth}>
+      <ButtonContainer tone={tone} fullWidth={fullWidth} {...props}>
         <StyledLink to={path}>{children}</StyledLink>
       </ButtonContainer>
     );
   }
 
   return (
-    <ButtonContainer tone={tone} fullWidth={fullWidth} onClick={onClick}>
+    <ButtonContainer
+      tone={tone}
+      fullWidth={fullWidth}
+      onClick={onClick}
+      {...props}
+    >
       <GeneralButton>{children}</GeneralButton>
     </ButtonContainer>
   );

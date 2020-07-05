@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import { withRouter } from 'react-router-dom';
 
+import { useAuth } from '../../../../contexts/AuthContext';
 import AuthService from '../../../../services/auth';
 
 import FormComponent from '../../../atoms/FormComponent/FormComponent';
@@ -17,6 +18,8 @@ const ButtonContainer = styled.div`
 `;
 
 const SignUpForm = ({ history }) => {
+  const { setAuthUser } = useAuth();
+
   const onFormSubmit = async (values) => {
     const { name, email, password } = values;
     const result = await AuthService.signUp({
@@ -29,7 +32,9 @@ const SignUpForm = ({ history }) => {
       return toast.error(result.message);
     }
 
-    return history.push('/');
+    setAuthUser(result.user);
+    history.push('/');
+    return true;
   };
 
   return (

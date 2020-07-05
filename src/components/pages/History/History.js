@@ -1,18 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
 import _ from 'lodash';
 
 import * as Styles from './HistoryStyles';
 
-const History = ({ history }) => {
-  const userLocalStorageData = JSON.parse(window.localStorage.getItem('user'));
-
-  if (!userLocalStorageData) {
-    return history.push('/');
-  }
-
+const History = () => {
   const historyLocalStorageData = JSON.parse(
     window.localStorage.getItem('history')
   );
@@ -48,8 +40,4 @@ const History = ({ history }) => {
   );
 };
 
-History.propTypes = {
-  history: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.any])).isRequired,
-};
-
-export default withRouter(History);
+export default History;

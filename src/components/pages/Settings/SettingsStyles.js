@@ -1,6 +1,21 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import Button from '../../atoms/Button/Button';
+
+export const SignUpContainer = styled.div`
+  padding: 24px;
+  height: calc(100vh - 72px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const FormButton = styled(Button)`
+  width: 50%;
+  margin: 0 12px;
+`;
+
 export const Container = styled.div`
   padding: 24px;
 `;
