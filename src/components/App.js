@@ -11,6 +11,7 @@ import SettingsPage from './pages/Settings/Settings';
 import HistoryPage from './pages/History/History';
 import SignUpPage from './pages/SignUp/SignUp';
 import LoginPage from './pages/Login/Login';
+import SearchPage from './pages/Search/Search';
 
 import history from '../services/history';
 
@@ -90,6 +91,7 @@ const App = () => {
             <Route path="/settings" exact component={SettingsPage} />
             <Route path="/signup" component={SignUpPage} />
             <Route path="/login" component={LoginPage} />
+            <Route path="/search" component={SearchPage} />
 
             <PrivateRoute path="/settings/history" component={HistoryPage} />
             <NotificationContainer />

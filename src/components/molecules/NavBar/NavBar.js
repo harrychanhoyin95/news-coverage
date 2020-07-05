@@ -48,8 +48,8 @@ const NavBar = ({ history }) => {
   return (
     <Container>
       <NavBarItemsContainer>
-        <MenuItem icon="bars" />
         <MenuItem icon="newspaper" onClick={() => history.push('/')} />
+        <MenuItem icon="search" onClick={() => history.push('/search')} />
         <MenuItem icon="coins" onClick={() => history.push('/currency')} />
         <MenuItem icon="cog" onClick={() => history.push('/settings')} />
       </NavBarItemsContainer>

@@ -17,7 +17,7 @@ const ButtonContainer = styled.div`
   display: grid;
 `;
 
-const SignUpForm = ({ history }) => {
+const LoginForm = ({ history }) => {
   const { setAuthUser } = useAuth();
 
   const onFormSubmit = async (values) => {
@@ -71,8 +71,8 @@ const SignUpForm = ({ history }) => {
   );
 };
 
-SignUpForm.propTypes = {
+LoginForm.propTypes = {
   history: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.any])).isRequired,
 };
 
-export default withRouter(SignUpForm);
+export default withRouter(LoginForm);
