@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[context.production.environment]
+  API_PATH = "https://news-coverage-api.herokuapp.com/api"
