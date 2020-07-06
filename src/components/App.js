@@ -75,18 +75,18 @@ const App = () => {
               path="/"
               exact
               component={NewsPage}
-              url="http://localhost:3000/api/news/sources"
+              url={`${process.env.API_PATH}/news/sources`}
             />
             <DataFetchingRoute
               path="/news/:source"
               component={NewsSourcePage}
-              url="http://localhost:3000/api/news"
+              url={`${process.env.API_PATH}/news`}
               urlParams="source"
             />
             <DataFetchingRoute
               path="/currency"
               component={CurrencyPage}
-              url="http://localhost:3000/api/currency"
+              url={`${process.env.API_PATH}/currency`}
             />
             <Route path="/settings" exact component={SettingsPage} />
             <Route path="/signup" component={SignUpPage} />

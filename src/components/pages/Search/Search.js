@@ -14,7 +14,7 @@ const Search = () => {
   const onFormSubmit = async ({ keyword, sortBy }) => {
     setLoading(true);
     await fetch(
-      `http://localhost:3000/api/news/search?keyword=${keyword}&sortBy=${sortBy}`
+      `${process.env.API_PATH}/news/search?keyword=${keyword}&sortBy=${sortBy}`
     )
       .then((res) => res.json())
       .then((json) => setSearchData(json.data));
