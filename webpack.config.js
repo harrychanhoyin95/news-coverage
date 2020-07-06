@@ -63,6 +63,8 @@ module.exports = {
       filename: 'index.html',
       inject: 'body',
     }),
-    new Dotenv(),
+    new Dotenv({
+      path: path.resolve(__dirname, './.env'),
+    }),
   ],
 };
