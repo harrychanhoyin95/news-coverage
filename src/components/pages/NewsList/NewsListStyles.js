@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Container = styled.div`
   padding: 24px;
 
-  @media ${(props) => props.theme.breakpoints.desktopOrTable} {
+  @media ${(props) => props.theme.breakpoints.desktopOrTablet} {
     padding: 24px 96px 96px 96px;
   }
 `;

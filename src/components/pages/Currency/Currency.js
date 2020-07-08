@@ -8,7 +8,7 @@ import Heading from '../../atoms/Heading/Heading';
 const Container = styled.div`
   padding: 24px;
 
-  @media ${(props) => props.theme.breakpoints.desktopOrTable} {
+  @media ${(props) => props.theme.breakpoints.desktopOrTablet} {
     padding: 0 96px;
   }
 `;

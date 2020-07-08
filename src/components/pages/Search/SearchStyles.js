@@ -7,7 +7,7 @@ export const StyledHeading = styled(Heading)`
   margin-bottom: 0;
   padding: 24px;
 
-  @media ${(props) => props.theme.breakpoints.desktopOrTable} {
+  @media ${(props) => props.theme.breakpoints.desktopOrTablet} {
     padding: 24px 96px;
   }
 `;
@@ -15,7 +15,7 @@ export const StyledHeading = styled(Heading)`
 export const StyledSearchForm = styled(SearchForm)`
   padding: 24px 24px 0 24px;
 
-  @media ${(props) => props.theme.breakpoints.desktopOrTable} {
+  @media ${(props) => props.theme.breakpoints.desktopOrTablet} {
     padding: 0 96px 24px 96px;
   }
 `;
@@ -23,7 +23,7 @@ export const StyledSearchForm = styled(SearchForm)`
 export const DataContainer = styled.div`
   padding: 0 24px;
 
-  @media ${(props) => props.theme.breakpoints.desktopOrTable} {
+  @media ${(props) => props.theme.breakpoints.desktopOrTablet} {
     padding: 0 96px;
   }
 `;

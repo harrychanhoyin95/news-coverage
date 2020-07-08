@@ -7,7 +7,7 @@ export const HeadingContainer = styled.div`
   padding-top: 24px;
   margin-bottom: 24px;
 
-  @media ${(props) => props.theme.breakpoints.desktopOrTable} {
+  @media ${(props) => props.theme.breakpoints.desktopOrTablet} {
     padding-left: 96px;
   }
 `;
@@ -28,7 +28,7 @@ export const LinkContainer = styled.a`
   color: #fff;
   text-decoration: none;
 
-  @media ${(props) => props.theme.breakpoints.desktopOrTable} {
+  @media ${(props) => props.theme.breakpoints.desktopOrTablet} {
     padding-left: 96px;
   }
 

@@ -9,7 +9,7 @@ import Header from '../Header/Header';
 const ChildrenContainer = styled.div`
   margin-bottom: 48px;
 
-  @media ${(props) => props.theme.breakpoints.desktopOrTable} {
+  @media ${(props) => props.theme.breakpoints.desktopOrTablet} {
     margin-bottom: 0;
   }
 `;
