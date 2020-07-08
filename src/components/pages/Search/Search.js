@@ -21,8 +21,6 @@ const Search = () => {
     setLoading(false);
   };
 
-  console.log('searchData', searchData);
-
   return (
     <>
       <Styles.StyledHeading>Search</Styles.StyledHeading>
@@ -39,7 +37,11 @@ const Search = () => {
           searchData.map((n, index) => {
             return (
               <LazyLoad key={`${n.title}${index}`} once>
-                <Styles.InfoContainer>
+                <Styles.InfoContainer
+                  href={n.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Styles.Title>{n.title}</Styles.Title>
                   <Styles.Source>{n.source.name}</Styles.Source>
                   <Styles.Time>
