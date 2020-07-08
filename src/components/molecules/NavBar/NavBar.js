@@ -14,7 +14,7 @@ const Container = styled.div`
 const NavBarItemsContainer = styled.div`
   display: flex;
   height: 48px;
-  background-color: #202020;
+  background-color: ${(props) => props.theme.colors.blacks[0]};
 `;
 
 const MenuItem = ({ icon, onClick }) => {

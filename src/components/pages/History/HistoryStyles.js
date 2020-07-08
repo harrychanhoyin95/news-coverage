@@ -5,12 +5,12 @@ import Heading from '../../atoms/Heading/Heading';
 export const StyledHeading = styled(Heading)`
   padding: 24px;
   margin: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid ${(props) => props.theme.colors.whites[1]};
 `;
 
 export const NewsPiece = styled.div`
   padding: 16px 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid ${(props) => props.theme.colors.whites[1]};
 `;
 
 export const NewsLink = styled.a`
@@ -24,5 +24,5 @@ export const NewsTitle = styled.div`
 `;
 
 export const NewsSource = styled.div`
-  color: rgba(255, 255, 255, 0.75);
+  color: ${(props) => props.theme.colors.whites[2]};
 `;

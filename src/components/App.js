@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
 import { AuthContext } from '../contexts/AuthContext';
+import { theme } from './theme';
 
 import NewsPage from './pages/NewsList/NewsList';
 import NewsSourcePage from './pages/News/News';
@@ -66,39 +68,41 @@ const App = () => {
   };
 
   return (
-    <AuthContext.Provider value={{ authUser, setAuthUser: setUser }}>
-      <Router history={history}>
-        <AppStyle />
-        <Switch>
-          <Layout>
-            <DataFetchingRoute
-              path="/"
-              exact
-              component={NewsPage}
-              url={`${process.env.API_PATH}/news/sources`}
-            />
-            <DataFetchingRoute
-              path="/news/:source"
-              component={NewsSourcePage}
-              url={`${process.env.API_PATH}/news`}
-              urlParams="source"
-            />
-            <DataFetchingRoute
-              path="/currency"
-              component={CurrencyPage}
-              url={`${process.env.API_PATH}/currency`}
-            />
-            <Route path="/settings" exact component={SettingsPage} />
-            <Route path="/signup" component={SignUpPage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/search" component={SearchPage} />
+    <ThemeProvider theme={theme}>
+      <AuthContext.Provider value={{ authUser, setAuthUser: setUser }}>
+        <Router history={history}>
+          <AppStyle />
+          <Switch>
+            <Layout>
+              <DataFetchingRoute
+                path="/"
+                exact
+                component={NewsPage}
+                url={`${process.env.API_PATH}/news/sources`}
+              />
+              <DataFetchingRoute
+                path="/news/:source"
+                component={NewsSourcePage}
+                url={`${process.env.API_PATH}/news`}
+                urlParams="source"
+              />
+              <DataFetchingRoute
+                path="/currency"
+                component={CurrencyPage}
+                url={`${process.env.API_PATH}/currency`}
+              />
+              <Route path="/settings" exact component={SettingsPage} />
+              <Route path="/signup" component={SignUpPage} />
+              <Route path="/login" component={LoginPage} />
+              <Route path="/search" component={SearchPage} />
 
-            <PrivateRoute path="/settings/history" component={HistoryPage} />
-            <NotificationContainer />
-          </Layout>
-        </Switch>
-      </Router>
-    </AuthContext.Provider>
+              <PrivateRoute path="/settings/history" component={HistoryPage} />
+              <NotificationContainer />
+            </Layout>
+          </Switch>
+        </Router>
+      </AuthContext.Provider>
+    </ThemeProvider>
   );
 };
 

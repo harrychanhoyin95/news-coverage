@@ -21,6 +21,8 @@ const Search = () => {
     setLoading(false);
   };
 
+  console.log('searchData', searchData);
+
   return (
     <>
       <Styles.StyledHeading>Search</Styles.StyledHeading>

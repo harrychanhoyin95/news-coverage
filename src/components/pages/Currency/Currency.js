@@ -7,6 +7,10 @@ import Heading from '../../atoms/Heading/Heading';
 
 const Container = styled.div`
   padding: 24px;
+
+  @media ${(props) => props.theme.breakpoints.desktopOrTable} {
+    padding: 0 96px;
+  }
 `;
 
 const Flex = styled.div`
@@ -16,7 +20,7 @@ const Flex = styled.div`
 
 const Date = styled.div`
   margin-bottom: 24px;
-  color: rgba(255, 255, 255, 0.75);
+  color: ${(props) => props.theme.colors.whites[2]};
 `;
 
 const Table = styled.table`
@@ -32,7 +36,7 @@ const TH = styled.th`
 const TData = styled.td`
   text-align: ${(props) => props.textAlign};
   padding: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid ${(props) => props.theme.colors.whites[0]};
 `;
 
 const Currency = ({ response }) => {

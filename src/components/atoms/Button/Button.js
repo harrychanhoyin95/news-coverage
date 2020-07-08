@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ButtonContainer = styled.div`
@@ -14,28 +14,30 @@ const ButtonContainer = styled.div`
     ${(props) => {
       switch (props.tone) {
         case 'primary':
-          return '#fbc308';
+          return props.theme.colors.yellow;
         case 'danger':
-          return '#c0392b';
+          return props.theme.colors.label.danger;
         default:
-          return '#fbc308';
+          return props.theme.colors.yellow;
       }
     }};
   border-radius: 4px;
   background-color: ${(props) => {
     switch (props.tone) {
       case 'primary':
-        return '#fbc308';
+        return props.theme.colors.yellow;
       case 'danger':
-        return '#c0392b';
+        return props.theme.colors.label.danger;
       default:
-        return '#fbc308';
+        return props.theme.colors.yellow;
     }
   }};
   width: ${(props) => (props.fullWidth ? '100%' : 'initial')};
+  cursor: pointer;
 
   & > a,
   & > button {
+    cursor: pointer;
     color: ${(props) => {
       switch (props.tone) {
         case 'primary':
@@ -54,6 +56,7 @@ const StyledLink = styled(Link)`
   color: #fff;
   cursor: pointer;
   user-select: none;
+  cursor: pointer;
 `;
 
 const GeneralButton = styled.button`
@@ -74,6 +77,7 @@ const Button = ({
   onClick,
   fullWidth,
   isSubmitting,
+  history,
   ...props
 }) => {
   let tone;
@@ -100,7 +104,12 @@ const Button = ({
 
   if (type === 'path') {
     return (
-      <ButtonContainer tone={tone} fullWidth={fullWidth} {...props}>
+      <ButtonContainer
+        tone={tone}
+        fullWidth={fullWidth}
+        {...props}
+        onClick={() => history.push(path)}
+      >
         <StyledLink to={path}>{children}</StyledLink>
       </ButtonContainer>
     );
@@ -139,4 +148,8 @@ Button.defaultProps = {
   isSubmitting: false,
 };
 
-export default Button;
+Button.propTypes = {
+  history: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.any])).isRequired,
+};
+
+export default withRouter(Button);

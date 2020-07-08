@@ -8,11 +8,10 @@ export const Container = styled.div`
 
 export const MuiTextField = styled(TextField)`
   & > .MuiFormLabel-root {
-    /* color: rgba(255, 255, 255, 0.75); */
     color: #fff;
 
     &.Mui-focused {
-      color: #fbc308;
+      color: ${(props) => props.theme.colors.yellow};
     }
   }
 
@@ -31,7 +30,7 @@ export const MuiTextField = styled(TextField)`
 
     &.Mui-focused {
       .MuiOutlinedInput-notchedOutline {
-        border-color: #fbc308 !important;
+        border-color: ${(props) => props.theme.colors.yellow} !important;
       }
     }
   }
@@ -43,6 +42,6 @@ export const ErrorContainer = styled.div`
 `;
 
 export const Error = styled.div`
-  color: #fbc308;
+  color: ${(props) => props.theme.colors.yellow};
   font-size: 14px;
 `;

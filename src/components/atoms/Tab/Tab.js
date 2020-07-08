@@ -4,8 +4,10 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   padding: 8px;
-  border-bottom: 1px solid ${(props) => (props.active ? '#fbc308' : 'none')};
-  color: ${(props) => (props.active ? '#fff' : 'rgba(255, 255, 255, 0.75)')};
+  border-bottom: 1px solid
+    ${(props) => (props.active ? props.theme.colors.yellow : 'none')};
+  color: ${(props) => (props.active ? '#fff' : props.theme.colors.whites[2])};
+  cursor: pointer;
 `;
 
 const Tab = ({ children, ...props }) => {
