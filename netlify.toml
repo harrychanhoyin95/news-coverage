@@ -3,4 +3,4 @@
   publish = "dist"
 
 [context.production.environment]
-  API_PATH = "http://158.101.149.251:3000/api"
+  API_PATH = "https://158.101.149.251:443/api"
