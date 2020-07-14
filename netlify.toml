@@ -3,4 +3,4 @@
   publish = "dist"
 
 [context.production.environment]
-  API_PATH = "https://158.101.149.251:443/api"
+  API_PATH = "https://news-coverage-api.herokuapp.com//api"
