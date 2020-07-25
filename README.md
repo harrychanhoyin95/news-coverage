@@ -1,5 +1,5 @@
 ## 🌐 Website
-- URL: [https://www.harrychanhoyin95.com/](https://www.harrychanhoyin95.com/)
+- URL: [https://news-coverage.netlify.app/](https://news-coverage.netlify.app/)
 
 ## 💻 Tech Stack
 
